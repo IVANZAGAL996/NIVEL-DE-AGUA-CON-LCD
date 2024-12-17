@@ -2,7 +2,7 @@
 
 # Introducción
 
- En esta practica se utilizara  un sensor ultrasonico en una placa de desarrollo ESP32 y un display LCD en donde se mostrara el nivel del tanque.
+ En esta practica se utilizara  un sensor ultrasonico en una placa de desarrollo ESP32 y un display LCD en donde se mostrara el nivel del tanque, cuando esta al 90, 75, 50, 25, y 0 %
 
 # Material Necesario
 Para realizar esta practica necesitas lo siguiente:
@@ -143,7 +143,7 @@ delay (2000);
 ```
 Cargaremos las siguientes librerias:
 
-![]()
+![](https://github.com/IVANZAGAL996/NIVEL-DE-AGUA-CON-LCD/blob/main/LIBRERIAS.png)
 
 insertamos sensor, display LCD Y 4 relays
 
@@ -151,23 +151,33 @@ insertamos sensor, display LCD Y 4 relays
 
 ![](https://github.com/IVANZAGAL996/Ultrasonico-con-LCD/blob/main/lcd3.PNG)
 
-![]()
+![](https://github.com/IVANZAGAL996/NIVEL-DE-AGUA-CON-LCD/blob/main/RELAYS.png)
 
 realizamos la siguiente conexión:
 
-![]()
+![](https://github.com/IVANZAGAL996/NIVEL-DE-AGUA-CON-LCD/blob/main/Captura%20de%20pantalla%202024-12-17%20002444.png)
 
 Cargamos programa e iniciamos simulacion y obtenemos los siguientes resultados:
 
-![]()
+## Al 90 % (2>= && <=10)
 
-![]()
+![](https://github.com/IVANZAGAL996/NIVEL-DE-AGUA-CON-LCD/blob/main/NIVEL%2090.png)
 
-![]()
+## Al 75 % (11>= && <=20)
 
-![]()
+![](https://github.com/IVANZAGAL996/NIVEL-DE-AGUA-CON-LCD/blob/main/NIVEL%2075.png)
 
-![]()
+## Al 50 % (21>= && <=30)
+
+![](https://github.com/IVANZAGAL996/NIVEL-DE-AGUA-CON-LCD/blob/main/NIVEL%2050.png)
+
+## Al 25 % (31>= && <=40)
+
+![](https://github.com/IVANZAGAL996/NIVEL-DE-AGUA-CON-LCD/blob/main/NIVEL%2025.png)
+
+## Al 0 % (41>=)
+
+![](https://github.com/IVANZAGAL996/NIVEL-DE-AGUA-CON-LCD/blob/main/NIVEL%200.png)
 
 
 ### creditos
