@@ -23,16 +23,21 @@ Instrucciones de preparación de entorno:
 // defines pins numbers
 const int trigPin = 4;
 const int echoPin = 15;
-const int led1 = 22;
-const int led2 = 21;
-const int led3 = 19;
-const int led4 = 18;
+const int led1 = 2;
+const int led2 = 5;
+const int led3 = 16;
+const int led4 = 17;
+
+#include <LiquidCrystal_I2C.h> //Libreria de LCD
+#define I2C_ADDR    0x27
+#define LCD_COLUMNS 20
+#define LCD_LINES   4
 
 // defines variables
 long duration;
 int distance;
 int safetyDistance;
-
+LiquidCrystal_I2C lcd(I2C_ADDR, LCD_COLUMNS, LCD_LINES);
 
 void setup() {
 pinMode(trigPin, OUTPUT); // Sets the trigPin as an Output
@@ -42,6 +47,8 @@ pinMode(led2, OUTPUT);
 pinMode(led3, OUTPUT);
 pinMode(led4, OUTPUT);
 Serial.begin(9600); // Starts the serial communication
+lcd.init();
+lcd.backlight();
 }
 
 
@@ -62,26 +69,70 @@ duration = pulseIn(echoPin, HIGH);
 distance= duration*0.034/2;
 
 safetyDistance = distance;
-if (safetyDistance>=2 && safetyDistance<=5)
+if (safetyDistance>=2 && safetyDistance<=10)
 {
   digitalWrite(led1, HIGH);
   digitalWrite(led2, LOW);
   digitalWrite(led3, LOW);
   digitalWrite(led4, LOW);
+lcd.clear();  
+lcd.setCursor(0, 0);
+lcd.print("NIVEL DE TANQUE ");
+lcd.setCursor(6, 1);
+lcd.print(" 90% ");
+delay(2000);
 }
-else if(safetyDistance>=5 && safetyDistance<=10) 
+else if(safetyDistance>=11 && safetyDistance<=20) 
 {
   digitalWrite(led1, HIGH);
   digitalWrite(led2, HIGH);
   digitalWrite(led3, LOW);
   digitalWrite(led4, LOW);
+  lcd.clear();
+   lcd.setCursor(0, 0);
+ lcd.print("NIVEL DE TANQUE ");
+ lcd.setCursor(6, 1);
+ lcd.print(" 75% ");
+  delay(2000);
+}
+else if(safetyDistance>=21 && safetyDistance<=30) 
+{
+  digitalWrite(led1, HIGH);
+  digitalWrite(led2, HIGH);
+  digitalWrite(led3, HIGH);
+  digitalWrite(led4, LOW);
+  lcd.clear(); 
+  lcd.setCursor(0, 0);
+lcd.print("NIVEL DE TANQUE ");
+lcd.setCursor(6, 1);
+lcd.print(" 50% ");
+delay(2000);
+}
+else if(safetyDistance>=31 && safetyDistance<=40) 
+{
+  digitalWrite(led1, HIGH);
+  digitalWrite(led2, HIGH);
+  digitalWrite(led3, HIGH);
+  digitalWrite(led4, HIGH);
+  lcd.clear(); 
+  lcd.setCursor(0, 0);
+lcd.print("NIVEL DE TANQUE ");
+lcd.setCursor(6, 1);
+lcd.print(" 25% ");
+delay(2000);
 }
 else
 {
- digitalWrite(led1,  LOW);
+  digitalWrite(led1, LOW);
   digitalWrite(led2, LOW);
   digitalWrite(led3, LOW);
   digitalWrite(led4, LOW);
+  lcd.clear(); 
+  lcd.setCursor(0, 0);
+lcd.print("NIVEL DE TANQUE ");
+lcd.setCursor(6, 1);
+lcd.print(" 0% ");
+delay(2000);
 }
 
 // Prints the distance on the Serial Monitor
@@ -90,5 +141,39 @@ Serial.println(distance);
 delay (2000);
 }
 ```
+Cargaremos las siguientes librerias:
+
+![]()
+
+insertamos sensor, display LCD Y 4 relays
+
+![](https://github.com/IVANZAGAL996/Ultrasonico-con-LCD/blob/main/sensor%203.PNG)
+
+![](https://github.com/IVANZAGAL996/Ultrasonico-con-LCD/blob/main/lcd3.PNG)
+
+![]()
+
+realizamos la siguiente conexión:
+
+![]()
+
+Cargamos programa e iniciamos simulacion y obtenemos los siguientes resultados:
+
+![]()
+
+![]()
+
+![]()
+
+![]()
+
+![]()
+
+
+### creditos
+
+Desarrollado por Edgar Ivan Prospero Zagal Ponce
+
+[GitHub](https://github.com/IVANZAGAL996)
 
 
